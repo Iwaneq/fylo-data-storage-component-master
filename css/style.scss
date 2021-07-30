@@ -1,12 +1,15 @@
 $primary:hsl(228, 56%, 26%);
 $secondary:hsl(229, 57%, 11%);
-$text:hsl(243, 100%, 93%);
+$text:hsl(244, 24%, 75%);
 
 $small-tablet:450px;
 $medium-tablet:550px;
 $big-tablet:650px;
 $small-laptop:770px;
-$desktop:1440px;
+$medium-laptop:900px;
+$big-laptop:1070px;
+$small-desktop:1440px;
+$medium-desktop:1550px;
 
 @mixin block{
     padding: 2.5rem;
@@ -25,14 +28,20 @@ html, body{
 
 body{
     min-height: 100vh;
-    background-color: $secondary;
     background: url("../images/bg-mobile.png") no-repeat center center fixed;
     background-size: cover;
     position: relative;
-    color: $text;
+    color: white;
     font-size: 12px;
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
+
+    @media (min-width:$small-laptop) {
+        background: url("../images/bg-desktop.png") no-repeat center bottom fixed;
+        background-color: $secondary;
+        background-size: 100% 50%;
+        font-size: 18px;
+    }
 }
 
 .main-content{
@@ -48,9 +57,15 @@ body{
         flex-direction: row;
         justify-content:space-around;
         align-items: flex-end;
-        width: 80%;
+        width: 95%;
         left:50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+    @media(min-width: $medium-laptop){
+        width: 80%;
+    }
+    @media(min-width:$big-laptop){
+        width: 60%;
     }
 }
 
@@ -63,7 +78,7 @@ body{
     &__buttons{
         margin-top: 2rem;
         display: flex;
-        width: 70%;
+        width: 85%;
         justify-content: space-between;
 
         &__button{
@@ -74,6 +89,11 @@ body{
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+    }
+    @media (min-width:375px) {
+        &__buttons{
+            width:75%;
         }
     }
     @media (min-width:$small-tablet) {
@@ -87,10 +107,34 @@ body{
         }
     }
     @media(min-width:$big-tablet){
-        width: 40%;
+        width: 45%;
 
         &__buttons{
             width: 90%;
+        }
+    }
+    @media (min-width:700px) {
+        &__buttons{
+            width: 75%;
+        }
+    }
+    @media (min-width:$small-laptop) {
+        &__buttons{
+            width: 65%;    
+        }
+    }
+    @media(min-width: $medium-laptop){
+        width: 40%;
+
+        &__buttons{
+            width: 70%;    
+        }
+    }
+    @media(min-width:$medium-desktop){
+        width: 35%;
+
+        &__buttons{
+            width: 65%;    
         }
     }
 }
@@ -165,6 +209,7 @@ body{
         span{
             position: relative;
             bottom:0.2rem;
+            color: $text;
         }
     }
 
@@ -178,6 +223,21 @@ body{
             padding: 0.6rem 1rem;
         }
     }
+    @media (min-width:$small-laptop) {
+        &__left-info{
+            right: 25%;
+        }
+    }
+    @media (min-width:$medium-laptop) {
+        width: 55%;
+    }
+    @media(min-width:$medium-desktop){
+        width: 60%;
+
+        &__left-info{
+            right: 18%;
+        }
+    }
 }
 
 .attribution{
@@ -185,4 +245,11 @@ body{
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
+
+    a:link{
+        color: tomato;
+    }
+    a:visited{
+        color: darken($color: tomato, $amount: 20%);
+    }
 }

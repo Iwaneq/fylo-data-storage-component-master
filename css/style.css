@@ -5,14 +5,22 @@ html, body {
 
 body {
   min-height: 100vh;
-  background-color: #0c122c;
   background: url("../images/bg-mobile.png") no-repeat center center fixed;
   background-size: cover;
   position: relative;
-  color: #dddbff;
+  color: white;
   font-size: 12px;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
+}
+
+@media (min-width: 770px) {
+  body {
+    background: url("../images/bg-desktop.png") no-repeat center bottom fixed;
+    background-color: #0c122c;
+    background-size: 100% 50%;
+    font-size: 18px;
+  }
 }
 
 .main-content {
@@ -30,9 +38,21 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
-    width: 80%;
+    width: 95%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@media (min-width: 900px) {
+  .main-content {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1070px) {
+  .main-content {
+    width: 60%;
   }
 }
 
@@ -49,7 +69,7 @@ body {
 .menu__buttons {
   margin-top: 2rem;
   display: flex;
-  width: 70%;
+  width: 85%;
   justify-content: space-between;
 }
 
@@ -61,6 +81,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 375px) {
+  .menu__buttons {
+    width: 75%;
+  }
 }
 
 @media (min-width: 450px) {
@@ -77,10 +103,40 @@ body {
 
 @media (min-width: 650px) {
   .menu {
-    width: 40%;
+    width: 45%;
   }
   .menu__buttons {
     width: 90%;
+  }
+}
+
+@media (min-width: 700px) {
+  .menu__buttons {
+    width: 75%;
+  }
+}
+
+@media (min-width: 770px) {
+  .menu__buttons {
+    width: 65%;
+  }
+}
+
+@media (min-width: 900px) {
+  .menu {
+    width: 40%;
+  }
+  .menu__buttons {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1550px) {
+  .menu {
+    width: 35%;
+  }
+  .menu__buttons {
+    width: 65%;
   }
 }
 
@@ -118,7 +174,7 @@ body {
 }
 
 .storage-info .loading-bar__bar__dot {
-  background: #dddbff;
+  background: #b2b0cf;
   width: 9px;
   height: 100%;
   float: right;
@@ -157,6 +213,7 @@ body {
 .storage-info__left-info span {
   position: relative;
   bottom: 0.2rem;
+  color: #b2b0cf;
 }
 
 @media (min-width: 650px) {
@@ -170,9 +227,38 @@ body {
   }
 }
 
+@media (min-width: 770px) {
+  .storage-info__left-info {
+    right: 25%;
+  }
+}
+
+@media (min-width: 900px) {
+  .storage-info {
+    width: 55%;
+  }
+}
+
+@media (min-width: 1550px) {
+  .storage-info {
+    width: 60%;
+  }
+  .storage-info__left-info {
+    right: 18%;
+  }
+}
+
 .attribution {
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.attribution a:link {
+  color: tomato;
+}
+
+.attribution a:visited {
+  color: #e02200;
 }
