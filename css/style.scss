@@ -1,0 +1,188 @@
+$primary:hsl(228, 56%, 26%);
+$secondary:hsl(229, 57%, 11%);
+$text:hsl(243, 100%, 93%);
+
+$small-tablet:450px;
+$medium-tablet:550px;
+$big-tablet:650px;
+$small-laptop:770px;
+$desktop:1440px;
+
+@mixin block{
+    padding: 2.5rem;
+    box-sizing: border-box;
+    width: 80%;
+    @include rounded-block();
+}
+@mixin rounded-block {
+    border-radius: 10px;
+}
+
+html, body{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    min-height: 100vh;
+    background-color: $secondary;
+    background: url("../images/bg-mobile.png") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    color: $text;
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+
+    @media(min-width:$big-tablet){
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: flex-end;
+        width: 80%;
+        left:50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+.menu{
+    @include block();
+    background-color: $primary;
+    border-top-right-radius: 100px;
+    float: left;
+
+    &__buttons{
+        margin-top: 2rem;
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+
+        &__button{
+            width: 45px;
+            height: 45px;
+            border-radius: 6px;
+            background-color: $secondary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    @media (min-width:$small-tablet) {
+        &__buttons{
+            width:60%;
+        }
+    }
+    @media (min-width:$medium-tablet) {
+        &__buttons{
+            width: 50%;
+        }
+    }
+    @media(min-width:$big-tablet){
+        width: 40%;
+
+        &__buttons{
+            width: 90%;
+        }
+    }
+}
+
+.storage-info{
+    @include block();
+    padding: 2rem 3rem 3rem 3rem;
+    background-color: $primary;
+    margin-top: 1rem;
+    float: left;
+    text-align: center;
+    position: relative;
+
+    .loading-bar{
+        width: 100%;
+        height: 17px;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        background-color: $secondary;
+        box-sizing: border-box;
+        padding: 2px;
+
+        @include rounded-block();
+
+        &__bar{
+            width: 75%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 2px;
+            background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+            @include rounded-block();
+
+            &__dot{
+                background: $text;
+                width: 9px;
+                height: 100%;
+                float: right;
+
+                @include rounded-block();
+            }
+        }
+    }
+
+    .bar-text{
+        font-weight: 700;
+
+        &--left{
+            float:left;
+        }
+        &--right{
+            float:right;
+        }
+    }
+
+    &__left-info{
+        position: absolute;
+        top:80%;
+        right: 50%;
+        transform: translateX(50%);
+        background: white;
+        font-weight:700;
+        padding: 1rem;
+        
+        @include rounded-block();
+
+        b{
+            font-size: 30px;
+            margin-right: 0.4rem;
+            color: black;
+        }
+        span{
+            position: relative;
+            bottom:0.2rem;
+        }
+    }
+
+    @media(min-width:$big-tablet){
+        width: 50%;
+
+        &__left-info{
+            top:-20%;
+            right:30%;
+
+            padding: 0.6rem 1rem;
+        }
+    }
+}
+
+.attribution{
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
