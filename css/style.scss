@@ -62,10 +62,12 @@ body{
         transform: translateX(-50%) translateY(-50%);
     }
     @media(min-width: $medium-laptop){
-        width: 80%;
+        width: 800px;
+        margin:0 auto;
     }
     @media(min-width:$big-laptop){
-        width: 60%;
+        width: 950px;
+        margin:0 auto;
     }
 }
 
