@@ -14,7 +14,7 @@ $medium-desktop:1550px;
 @mixin block{
     padding: 2.5rem;
     box-sizing: border-box;
-    width: 80%;
+    width: 100%;
     @include rounded-block();
 }
 @mixin rounded-block {
@@ -40,34 +40,33 @@ body{
         background: url("../images/bg-desktop.png") no-repeat center bottom fixed;
         background-color: $secondary;
         background-size: 100% 50%;
-        font-size: 18px;
+    }
+    @media (min-width:$medium-laptop) {
+        font-size: 14px;
     }
 }
 
 .main-content{
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 280px;
+    margin:0 auto;
 
     @media(min-width:$big-tablet){
         flex-direction: row;
         justify-content:space-around;
         align-items: flex-end;
-        width: 95%;
-        left:50%;
-        transform: translateX(-50%) translateY(-50%);
+        width: 600px;
     }
     @media(min-width: $medium-laptop){
         width: 800px;
-        margin:0 auto;
     }
     @media(min-width:$big-laptop){
         width: 950px;
-        margin:0 auto;
     }
 }
 
@@ -83,7 +82,8 @@ body{
         width: 85%;
         justify-content: space-between;
 
-        &__button{
+        .button{
+            position: relative;
             width: 45px;
             height: 45px;
             border-radius: 6px;
@@ -91,21 +91,29 @@ body{
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-    }
-    @media (min-width:375px) {
-        &__buttons{
-            width:75%;
-        }
-    }
-    @media (min-width:$small-tablet) {
-        &__buttons{
-            width:60%;
-        }
-    }
-    @media (min-width:$medium-tablet) {
-        &__buttons{
-            width: 50%;
+            transition: all 200ms ease-in-out;
+
+            &:hover{
+                transform: translateY(-15%);
+                cursor: pointer;
+
+                & .button__bg{
+                    opacity: 1;
+                }
+            }
+
+            &__bg{
+                border-radius: 6px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: darken($color: $secondary, $amount: 8);
+                opacity: 0;
+                z-index: -1;
+                transition: opacity 150ms 50ms;
+            }
         }
     }
     @media(min-width:$big-tablet){
@@ -115,28 +123,16 @@ body{
             width: 90%;
         }
     }
-    @media (min-width:700px) {
-        &__buttons{
-            width: 75%;
-        }
-    }
-    @media (min-width:$small-laptop) {
-        &__buttons{
-            width: 65%;    
-        }
-    }
-    @media(min-width: $medium-laptop){
-        width: 40%;
-
-        &__buttons{
-            width: 70%;    
-        }
-    }
-    @media(min-width:$medium-desktop){
+    @media (min-width:$medium-laptop) {
         width: 35%;
 
         &__buttons{
-            width: 65%;    
+            width: 80%;
+        }
+    }
+    @media (min-width:$big-laptop) {
+        &__buttons{
+            width: 70%;
         }
     }
 }
@@ -225,19 +221,20 @@ body{
             padding: 0.6rem 1rem;
         }
     }
-    @media (min-width:$small-laptop) {
+
+    @media (min-width:$medium-laptop) {
+        width: 55%;
+
+        text-align: left;
+
         &__left-info{
             right: 25%;
         }
     }
-    @media (min-width:$medium-laptop) {
-        width: 55%;
-    }
-    @media(min-width:$medium-desktop){
-        width: 60%;
-
+    
+    @media (min-width:$big-laptop) {
         &__left-info{
-            right: 18%;
+            right: 23%;
         }
     }
 }
